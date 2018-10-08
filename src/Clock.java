@@ -5,18 +5,34 @@ public class Clock {
 		//ask the user for a start time and duration
 		//give an ending time
 		
-		//get start time as a string
-		String answer = JOptionPane.showInputDialog(null, "Give me a start time (ex: 3:10)");
-		//figure out where the colon in
-		int colonInd = answer.indexOf(':');
-		//take start of string to where the colon is and make it an integer
-		int hours = Integer.parseInt(answer.substring(0, colonInd));
-		//take colon to end of string and make it an integer
-		int minutes = Integer.parseInt(answer.substring(colonInd + 1, answer.length()));
-		//check that it came in correctly
-		//System.out.println("Hours: " + hours);
-		//System.out.println("Minutes: " + minutes);
-		
+		//GET STARTING TIME
+		int hours = 0;
+		int minutes = 0;
+		do {
+			String answer = JOptionPane.showInputDialog(null, "Give me a start time (ex: 3:10): ");
+			//figure out where the colon in
+			int colonInd = answer.indexOf(':');
+			//take start of string to where the colon is and make it an integer
+			System.out.println(colonInd);
+			hours = Integer.parseInt(answer.substring(0, colonInd));
+			//take colon to end of string and make it an integer
+			System.out.println(hours);
+			minutes = Integer.parseInt(answer.substring(colonInd + 1, answer.length()));
+			//check that it came in correctly
+			System.out.println("Hours: " + hours);
+			System.out.println("Minutes: " + minutes);
+		} while (hours < 1 || minutes < 0);
+		//GET DURATION
+		String input = JOptionPane.showInputDialog(null, "Give me a duration (min.): ");
+		int duration = Integer.parseInt(input);
+		minutes += duration;
+		if (minutes > 60 || minutes == 60) {
+			int addHour = minutes / 60;
+			hours += addHour;
+			minutes %= 60;
+		}
+		System.out.println("Hours: " + hours);
+		System.out.println("Minutes: " + minutes);		
 		
 		
 		
