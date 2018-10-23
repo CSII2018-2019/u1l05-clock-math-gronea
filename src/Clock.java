@@ -31,6 +31,9 @@ public class Clock {
 			hours += addHour;
 			minutes %= 60;
 		}
+		if (hours > 12) {
+			hours -= 12;
+		}
 		System.out.println("Hours: " + hours);
 		System.out.println("Minutes: " + minutes);		
 		
